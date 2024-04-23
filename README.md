@@ -48,3 +48,21 @@ The Manual Pick Tool is specifically designed to support the evaluation of P-wav
 </p>
 
 ### Feature 3 - Padding Noise Data for Processing
+#### a. Selecting Noise Segment:
+&emsp; Users can specify a noise duration (e.g., 1-2 seconds) that they wish to replicate for padding purposes. This is done via a textbox at the bottom left-hand side of the interface, marked in Figure 2 as 'Noise Length'.
+
+#### b. Padding Process:
+&emsp; The selected noise segment is automatically replicated to fulfil the required 10-second noise data benchmark. This padding technique extends the original noise data by copying the chosen segment, creating a dataset with an extended pre-event noise period.
+
+#### b. Data Adjustment:
+&emsp; The original seismic data is adjusted with the extended noise data, which shifts the dataset to provide a better baseline for the P-wave detection algorithms. The adjusted data is saved in the "Data_File/Expanded_Data/" directory in MiniSEED format.
+
+Figure 3 demonstrates this method by showing how a one-second noise window, chosen from between 4 and 5 seconds of the original data, is replicated to extend the recording by 10 seconds, thereby shifting the original data.
+
+<p align="center">
+  <img src="Figures/Figure_3.png" alt="Padding noise data" style="width: 90%" >
+  <br>
+  <em>Figure 3: Original Earthquake data before and after padding </em>
+</p>
+
+
