@@ -22,7 +22,8 @@ The Manual Pick Tool is specifically designed to support the evaluation of P-wav
 &emsp;  The P-wave arrival time and calculated amplitude are automatically recorded in an Excel sheet
 
 #### Visualisation of the tool's P-wave picking window
-<img src="Figures/Figure_1.png" alt="Tool's First Window for P-wave picking" style="width: 100%;" > 
+
+<img src="Figures/Figure_1.png" alt="Tool's First Window for P-wave picking" style="width: 100%" > 
 
 ### Feature 2 - Calculation of PGA for P-waves
 
