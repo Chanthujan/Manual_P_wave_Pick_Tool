@@ -41,6 +41,8 @@ The Manual Pick Tool is specifically designed to support the evaluation of P-wav
 #### c. Data Logging:
 &emsp; All calculated values, including the PGA and the selected time window, are automatically recorded in the same Excel sheet used in Feature 1.
 
+#### Visualisation of the tool's PGA calculation window
+
 <p align="center">
   <img src="Figures/Figure_2.png" alt="Tool's Second Window for PGA Calculation" style="width: 90%" >
   <br>
@@ -57,7 +59,9 @@ The Manual Pick Tool is specifically designed to support the evaluation of P-wav
 #### b. Data Adjustment:
 &emsp; The original seismic data is adjusted with the extended noise data, which shifts the dataset to provide a better baseline for the P-wave detection algorithms. The adjusted data is saved in the "Data_File/Expanded_Data/" directory in MiniSEED format.
 
-Figure 3 demonstrates this method by showing how a one-second noise window, chosen from between 4 and 5 seconds of the original data, is replicated to extend the recording by 10 seconds, thereby shifting the original data.
+Figure 3 visually demonstrates the padding process. It shows how a one-second noise window, selected from between 4 and 5 seconds of the original data, is replicated to extend the recording by 10 seconds.
+
+#### Visualisation of the tool's padding process
 
 <p align="center">
   <img src="Figures/Figure_3.png" alt="Padding noise data" style="width: 90%" >
