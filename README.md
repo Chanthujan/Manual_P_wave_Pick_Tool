@@ -81,3 +81,19 @@ Figure 3 visually demonstrates the padding process. It shows how a one-second no
 - **Instructions for Downloading**:
   - Detailed information on downloading earthquake data can be found through the GeoNet link: [GeoNet Data Access](https://www.geonet.org.nz/data/access/FDSN).
 
+### Running the Tool
+
+#### Prerequisites
+Before you start, ensure your system meets the following requirements:
+- **Python Version**: The tool is compatible with Python 3.8.
+- **Required Libraries**: Ensure that libraries such as `obspy`, `numpy`, and `matplotlib` are installed in your Python environment.
+
+#### Steps to Run
+1. **Data Preparation**:
+   - Verify that your seismic data is correctly organized within the "Data_File/" directory, as detailed in the Data Acquisition section.
+   
+2. **Launching the Tool**:
+   - Run `tool.py` from your Python environment. This will automatically open a window displaying the loaded ground motion data.
+
+3. **Output Files**:
+   - Calculations and picks are automatically saved in an Excel sheet named `PGA_Analysis.csv` in the "Results/" directory.
