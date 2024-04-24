@@ -21,7 +21,6 @@ def create_dir(dir):
         os.makedirs(dir)
     return dir
 
-#setting up the excel sheet
 path_temp_2 = "Results/"
 create_dir(path_temp_2)
 with open(path_temp_2 + "PGA_Analysis.csv", "a") as csv_file: #this is the file that will store the Detected P-wave time, Detected P value and PGA values of P-waves and S-waves
@@ -32,27 +31,16 @@ with open(path_temp_2 + "PGA_Analysis.csv", "a") as csv_file: #this is the file 
 
 def expand_Waveform(st, start, end, earthquake_batch, station_name):
     st_2 = st.slice(starttime=st[0].stats.starttime + start, endtime=st[0].stats.starttime + end)
-    # merge the data
-    df = st_2[0].stats.sampling_rate
     st_2.merge(method=0, fill_value='interpolate', interpolation_samples=st_2[0].stats.sampling_rate)
-
-    print(st[0].stats)
-
     total_samples = 0
-    start_time = st_2[0].stats.starttime
     array = []
     array_main = []
     for i in range(10 / (end - start)):
         total_samples += st_2[0].stats.npts
         array.append(st_2[0].data)
         print("total_samples", total_samples)
-
     st_2[0].data = np.concatenate(array)
-
-    endtime = start_time + total_samples / st_2[0].stats.sampling_rate
-    # st_2[0].stats.endtime = endtime
     st_2[0].stats.npts = total_samples
-    # merge the data
     st_2.merge(method=0, fill_value='interpolate')
     array_main.append(st_2[0].data)
     array_main.append(st[0].data)
@@ -60,15 +48,6 @@ def expand_Waveform(st, start, end, earthquake_batch, station_name):
     st[0].stats.npts = total_ntps
     st[0].data = np.concatenate(array_main)
     st.filter("bandpass", freqmin=0.1, freqmax=20)
-
-    npts = st[0].stats.npts
-    t = np.arange(npts, dtype=np.float32) / df
-    # fig = plt.figure()
-    # ax = fig.add_subplot(111)
-    # ax.plot(t, st[0].data, 'k')
-    # ax.set_xlabel("Time [s]")
-    # ax.set_ylabel("Amplitude")
-    #print the channel name
     print (st[0].stats.channel)
     path_temp = "Data_File/Expanded_Data/" + earthquake_batch + "/"
     create_dir(path_temp)
@@ -76,8 +55,6 @@ def expand_Waveform(st, start, end, earthquake_batch, station_name):
     create_dir(path_temp_2)
     filename = path_temp_2 + '/' + st[0].stats.channel +  "_" + "DATA" + ".mseed"
     st[0].write(filename, format="MSEED")
-    #ax.set_title("Raw data" )
-    #plt.show()
 
 
 
@@ -117,9 +94,7 @@ def save_PGA_3_sec(event):
         create_dir(path_temp)
         plt.savefig(path_temp + "Station Name: " + str(STATION_NAME) + "_" + str(EARTHQUAKE_BATCH)+ ".png", bbox_inches='tight' , dpi=900)
         print("saved plot for " + str(STATION_NAME) + " station")
-        #fig_2.clf()
         plt.close()
-    #save the PGA3 value in an excel sheet
 
 
 def save_PGA_5_sec(event):
@@ -151,8 +126,6 @@ def save_PGA_5_sec(event):
         plt.savefig(path_temp+ "Station Name: " + str(STATION_NAME) + "_" + str(EARTHQUAKE_BATCH)  + ".png", bbox_inches='tight' , dpi=900)
         print("saved plot for " + str(STATION_NAME) + " station")
         plt.close()
-        #fig_2.clf()
-        #plt.close()
 
 def save_PGA_8_sec(event):
     print("saving 8 seconds PGA value" + str(PGA8))
@@ -183,7 +156,6 @@ def save_PGA_8_sec(event):
         plt.savefig(path_temp + "Station Name: " + str(STATION_NAME) + "_" + str(EARTHQUAKE_BATCH) + ".png", bbox_inches='tight' , dpi=900)
         print("saved plot for " + str(STATION_NAME) + " station")
         plt.close()
-        #plt.close()
 
 def save_Error_Message(event):
     print("Saving Error Message")
@@ -210,7 +182,6 @@ def save_Error_Message(event):
         plt.savefig(path_temp+ "Station Name: " + str(STATION_NAME) + "_" + str(EARTHQUAKE_BATCH) + ".png", bbox_inches='tight' , dpi=900)
         print("saved plot for " + str(STATION_NAME) + " station")
         plt.close()
-        #fig_2.clf()
 
 def save_NO_DATA_Message(event):
     print("Saving NO DATA Message")
@@ -237,8 +208,7 @@ def save_NO_DATA_Message(event):
         plt.savefig(path_temp + "Station Name: " + str(STATION_NAME) + "_" + str(EARTHQUAKE_BATCH) + ".png", bbox_inches='tight' , dpi=900)
         print("saved plot for " + str(STATION_NAME) + " station")
         plt.close()
-        #fig_2.clf()
-        #plt.close()
+
 
 
 def close_plot(event):
@@ -284,7 +254,6 @@ def submit(text):
             writer = csv.writer(csv_file, delimiter=',')
             print("PGA value saved")
             writer.writerow([EARTHQUAKE_BATCH, STATION_NAME, str(round( X_COORDINATE,1)), DETECT_P, PGA_T, ydata, "N/A", "N/A", "N/A", PGA_S])
-            #print("PGA value saved")
             fig = plt.figure()
             npts = trace.stats.npts
             t = np.arange(npts, dtype=np.float32) / df
@@ -410,13 +379,6 @@ def onpick(event):
     PGA_8 = PGA_value( float(round( X_COORDINATE,1) *df ), df, trace_x, trace_y, trace, 8)
     PGA8 = PGA_8[0]
     plt.show()
-
-
-batch = 0
-#ear
-# print all the files in the directory
-#for earthquake in os.listdir(directory_1):
-
 
 global directory_1, max_limit
 directory_1 = "Data_File/"
