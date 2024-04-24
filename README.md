@@ -71,9 +71,13 @@ Figure 3 visually demonstrates the padding process. It shows how a one-second no
 
 ## Steps to Run the Tool
 
-### Data Acquisition - Steps to Setup the Data for the Tool
+### Data Acquisition: Setting Up Data for the Tool
+#### Data Storage
+**Directory Structure**: Ensure the tool's data is organized within the "Data_File/" directory, which should be created in the exact folder location as `tool.py`. This directory is meant to house subdirectories for each earthquake event, where each subdirectory contains the ground motion data in MiniSEED format from the stations that recorded the specific earthquake.
 
-The tool's data should be saved in the "Data_File/" directory (Create the directly in the exact folder location as the tool.py. This directory should contain the directories for earthquakes, where each earthquake directory will contain the ground motion data from the stations that recorded the particular event in miniseed format. Generally, this data can be downloaded by specifying a timeframe using the FDSN from any FDSN-supported ground motion databases such as IRIS or GeoNet. Information regarding downloading the earthquake data can be found in the following link: https://www.geonet.org.nz/data/access/FDSN
+ #### Downloading Data
+- **Data Source**: By specifying a timeframe, you can download the necessary earthquake data from any FDSN-supported ground motion databases such as IRIS or GeoNet.
 
- 
+- **Instructions for Downloading**:
+  - Detailed information on downloading earthquake data can be found through the GeoNet link: [GeoNet Data Access](https://www.geonet.org.nz/data/access/FDSN).
 
