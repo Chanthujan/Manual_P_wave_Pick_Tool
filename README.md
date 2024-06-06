@@ -90,7 +90,7 @@ Before you start, ensure your system meets the following requirements:
 
 #### Steps to Run
 1. **Data Preparation**:
-   - Verify that your seismic data is correctly organized within the "Data_File/" directory, as detailed in the Data Acquisition section.
+   - Verify that your seismic data is correctly organised within the "Data_File/" directory, as detailed in the Data Acquisition section.
    
 2. **Launching the Tool**:
    - Run `tool.py` from your Python environment. This will automatically open a window displaying the loaded ground motion data.
