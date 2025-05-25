@@ -96,4 +96,6 @@ Before you start, ensure your system meets the following requirements:
    - Run `tool.py` from your Python environment. This will automatically open a window displaying the loaded ground motion data.
 
 3. **Output Files**:
-   - Calculations and picks are automatically saved in an Excel sheet named `PGA_Analysis.csv` in the "Results/" directory.
+   - Calculations and picks are automatically saved in an Excel sheet named `PGA_Analysis.csv` in the "Results/" directory. 
+
+This work has been published as a research article. Link to the paper: **https://link.springer.com/article/10.1007/s12145-024-01519-9**
